@@ -10,10 +10,12 @@ class ChallengeCard extends StatelessWidget {
     required this.title,
     required this.image,
     required this.numOfPlayers,
+    this.onPressed,
   });
   final String title;
   final String image;
   final String numOfPlayers;
+  final VoidCallback? onPressed;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -40,7 +42,7 @@ class ChallengeCard extends StatelessWidget {
                 ),
                 const Spacer(),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: onPressed,
                   style: TextButton.styleFrom(
                     backgroundColor: AppColors.kPrimaryColor,
                   ),

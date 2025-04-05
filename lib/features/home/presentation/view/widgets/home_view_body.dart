@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/utils/assets.dart';
 import 'package:flutter_application_1/core/widgets/custom_app_bar.dart';
+import 'package:flutter_application_1/features/password_challenge/presentation/view/password_challenge_view.dart';
+import 'package:flutter_application_1/features/risk_challenge/presentation/view/risk_challenge_view.dart';
 
 import 'challenge_card.dart';
 
@@ -20,38 +22,47 @@ class HomeViewBody extends StatelessWidget {
               arrowBackExist: false,
             ),
           ),
-          const SliverToBoxAdapter(
+          SliverToBoxAdapter(
             child: Column(
               children: [
                 ChallengeCard(
                   image: Assets.assetsImagesPassword,
                   numOfPlayers: '2 - 4',
                   title: 'كلمة السر',
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      PasswordChallengeView.routeName,
+                    );
+                  },
                 ),
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
                 ChallengeCard(
                   image: Assets.assetsImagesRisk,
                   numOfPlayers: '2 - 4',
                   title: 'ريسك',
+                  onPressed: () {
+                    Navigator.pushNamed(context, RiskChallengeView.routeName);
+                  },
                 ),
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
 
-                ChallengeCard(
+                const ChallengeCard(
                   image: Assets.assetsImagesWhoami,
                   numOfPlayers: '1 - 4',
                   title: 'من انا',
                 ),
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
 
-                ChallengeCard(
+                const ChallengeCard(
                   image: Assets.assetsImagesBank,
                   numOfPlayers: '2 - 4',
                   title: 'البنك',
                 ),
 
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
 
-                ChallengeCard(
+                const ChallengeCard(
                   image: Assets.assetsImagesTimer,
                   numOfPlayers: '1 - 4',
                   title: '5 في 10',
