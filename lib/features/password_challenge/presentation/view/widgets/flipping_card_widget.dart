@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/utils/app_colors.dart';
 import 'package:flutter_application_1/core/utils/app_text_styles.dart';
 import 'package:flutter_application_1/features/password_challenge/data/models/password_challenge_model.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -16,14 +17,14 @@ class FlippingCardWidget extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
         gradient: LinearGradient(
-          colors: [Color(0xFF3C14EE), Color(0xFFB49DE4)],
+          colors: [AppColors.darkBlueGrey, AppColors.brightTeal],
         ),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Spacer(flex: 2),
-          Text(passwordChallengeModel.name, style: Styles.bold16),
+          Text(passwordChallengeModel.name, style: Styles.bold15),
           const Spacer(),
           GestureDetector(
             onTap: () async {

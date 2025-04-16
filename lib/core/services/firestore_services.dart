@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_application_1/core/services/database_services.dart';
-import 'package:flutter_application_1/core/utils/firebase_endpoints.dart';
 
 class FirestoreServices implements DataBaseServices {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -20,10 +19,11 @@ class FirestoreServices implements DataBaseServices {
   }
 
   @override
-  Future<List<Map<String, dynamic>>> getRandomDocuments() async {
-    CollectionReference collection = firestore.collection(
-      FirebaseEndpoints.passwordChallenge,
-    );
+  Future<List<Map<String, dynamic>>> getRandomDocuments({
+    required String path,
+    required int limit,
+  }) async {
+    CollectionReference collection = firestore.collection(path);
     // await firestore
     //     .collection(FirebaseEndpoints.passwordChallenge)
     //     .count()
@@ -39,7 +39,7 @@ class FirestoreServices implements DataBaseServices {
     Random random = Random();
     Set<String> randomIds = {};
 
-    while (randomIds.length < 8 && randomIds.length < allDocIds.length) {
+    while (randomIds.length < limit && randomIds.length < allDocIds.length) {
       randomIds.add(allDocIds[random.nextInt(allDocIds.length)]);
     }
 

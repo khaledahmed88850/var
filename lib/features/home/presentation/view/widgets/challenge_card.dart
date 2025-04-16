@@ -44,9 +44,12 @@ class ChallengeCard extends StatelessWidget {
                 TextButton(
                   onPressed: onPressed,
                   style: TextButton.styleFrom(
-                    backgroundColor: AppColors.kPrimaryColor,
+                    backgroundColor: AppColors.brightTeal,
                   ),
-                  child: const Text('ابدأ التحدي', style: Styles.bold13),
+                  child: Text(
+                    'ابدأ التحدي',
+                    style: Styles.bold13.copyWith(color: Colors.white),
+                  ),
                 ),
               ],
             ),
