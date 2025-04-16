@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/services/get_it_services.dart';
+import 'package:flutter_application_1/features/bank_challenge/presentation/view/bank_challenge_view.dart';
 import 'package:flutter_application_1/features/home/presentation/view/home_view.dart';
 import 'package:flutter_application_1/features/password_challenge/domain/repo/password_challenge_repo.dart';
 import 'package:flutter_application_1/features/password_challenge/presentation/cubit/password_challenge_cubit.dart';
@@ -36,6 +37,8 @@ Route onGenerateRoute(RouteSettings settings) {
               child: const PasswordChallengeView(),
             ),
       );
+    case BankChallengeView.routeName:
+      return MaterialPageRoute(builder: (context) => const BankChallengeView());
     default:
       return MaterialPageRoute(builder: (context) => const Placeholder());
   }

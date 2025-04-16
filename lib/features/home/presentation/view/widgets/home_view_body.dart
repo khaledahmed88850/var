@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/utils/assets.dart';
 import 'package:flutter_application_1/core/widgets/custom_app_bar.dart';
+import 'package:flutter_application_1/features/bank_challenge/presentation/view/bank_challenge_view.dart';
 import 'package:flutter_application_1/features/password_challenge/presentation/view/password_challenge_view.dart';
 import 'package:flutter_application_1/features/risk_challenge/presentation/view/risk_challenge_view.dart';
 
@@ -54,10 +55,13 @@ class HomeViewBody extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
 
-                const ChallengeCard(
+                ChallengeCard(
                   image: Assets.assetsImagesBank,
                   numOfPlayers: '2 - 4',
                   title: 'البنك',
+                  onPressed: () {
+                    Navigator.pushNamed(context, BankChallengeView.routeName);
+                  },
                 ),
 
                 const SizedBox(height: 12),
