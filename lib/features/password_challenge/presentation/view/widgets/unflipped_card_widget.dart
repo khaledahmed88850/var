@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/utils/app_colors.dart';
 import 'package:flutter_application_1/core/utils/app_text_styles.dart';
 
 class UnflippedCardWidget extends StatelessWidget {
@@ -14,7 +15,7 @@ class UnflippedCardWidget extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(20)),
         ),
         gradient: LinearGradient(
-          colors: [Color(0xff522cfd), Color(0xFF836EB2)],
+          colors: [AppColors.seaGreen, AppColors.lightBlue],
         ),
       ),
       child: Center(child: Text(index, style: Styles.bold23)),
