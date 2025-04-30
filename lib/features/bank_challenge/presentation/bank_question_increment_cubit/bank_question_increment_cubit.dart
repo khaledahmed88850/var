@@ -10,8 +10,8 @@ class BankQuestionIncrementCubit extends Cubit<BankQuestionIncrementState> {
   int score2 = 0;
   int questionIndex = 0;
   void incrementConter() {
-    incrementQuestionIndex();
-    if (questionIndex <= 11) {
+    int index = questionIndex + 1;
+    if (index <= 11) {
       if (counter == 0) {
         counter += 1;
       } else if (counter == 1) {
@@ -19,15 +19,13 @@ class BankQuestionIncrementCubit extends Cubit<BankQuestionIncrementState> {
       } else {
         counter += counter;
       }
-      emit(QuestionIncrement());
     }
+    incrementQuestionIndex();
   }
 
   void resetCounter() {
-    incrementQuestionIndex();
     counter = 0;
-
-    emit(QuestionIncrement());
+    incrementQuestionIndex();
   }
 
   void reset() {
@@ -40,6 +38,7 @@ class BankQuestionIncrementCubit extends Cubit<BankQuestionIncrementState> {
   void incrementQuestionIndex() {
     if (questionIndex < 11) {
       questionIndex += 1;
+      emit(QuestionIncrement());
     }
   }
 
