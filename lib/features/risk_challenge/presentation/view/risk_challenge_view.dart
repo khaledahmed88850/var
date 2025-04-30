@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/core/utils/app_text_styles.dart';
+import 'package:flutter_application_1/core/widgets/custom_app_bar.dart';
 import 'package:flutter_application_1/features/risk_challenge/presentation/view/widgets/risk_challenge_view_body.dart';
 
 class RiskChallengeView extends StatelessWidget {
@@ -8,11 +8,7 @@ class RiskChallengeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: const Text('ريسك', style: Styles.bold28),
-        centerTitle: true,
-      ),
+      appBar: buildAppBar(context: context, title: 'ريسك'),
       body: const RiskChallengeViewBody(),
     );
   }

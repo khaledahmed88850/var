@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/core/utils/app_text_styles.dart';
+import 'package:flutter_application_1/core/widgets/custom_app_bar.dart';
 import 'package:flutter_application_1/features/bank_challenge/presentation/view/widgets/bank_challenge_view_body.dart';
 
 class BankChallengeView extends StatefulWidget {
@@ -30,11 +30,7 @@ class _BankChallengeViewState extends State<BankChallengeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: const Text('بنك', style: Styles.bold28),
-        centerTitle: true,
-      ),
+      appBar: buildAppBar(context: context, title: 'بنك'),
       body: BankChallengeViewBody(pageController: pageController),
     );
   }
