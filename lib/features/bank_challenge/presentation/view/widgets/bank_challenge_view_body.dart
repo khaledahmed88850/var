@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/features/bank_challenge/presentation/bank_question_increment_cubit/bank_question_increment_cubit.dart';
 import 'package:flutter_application_1/features/bank_challenge/presentation/view/widgets/bank_page_view.dart';
 import 'package:flutter_application_1/features/bank_challenge/presentation/view/widgets/rounds_widget.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/utils/app_text_styles.dart';
@@ -37,21 +39,27 @@ class BankChallengeViewBody extends StatelessWidget {
 
         Expanded(child: BankPageView(pageController: pageController)),
 
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Text('الفريق الأول', style: Styles.bold16),
+            const Text('الفريق الأول', style: Styles.bold16),
 
-            Text('14', style: Styles.bold16),
+            Text(
+              '${context.watch<BankQuestionIncrementCubit>().score1}',
+              style: Styles.bold16,
+            ),
           ],
         ),
         SizedBox(height: 20.h),
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Text('الفريق الثاني', style: Styles.bold16),
+            const Text('الفريق الثاني', style: Styles.bold16),
 
-            Text('18', style: Styles.bold16),
+            Text(
+              '${context.watch<BankQuestionIncrementCubit>().score2}',
+              style: Styles.bold16,
+            ),
           ],
         ),
         SizedBox(height: 80.h),

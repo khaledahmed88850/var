@@ -25,7 +25,7 @@ class FirestoreServices implements DataBaseServices {
   }) async {
     CollectionReference collection = firestore.collection(path);
     // await firestore
-    //     .collection(FirebaseEndpoints.passwordChallenge)
+    //     .collection(FirebaseEndpoints.bankChallenge)
     //     .count()
     //     .get()
     //     .then((res) => logger.log('${res.count}'));
