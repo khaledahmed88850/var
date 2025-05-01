@@ -62,15 +62,25 @@ class FirestoreServices implements DataBaseServices {
   Future<Map<String, dynamic>> getRandomSingleDocument({
     required String path,
   }) async {
-    QuerySnapshot collection =
-        await FirebaseFirestore.instance.collection(path).get();
+    final random = Random().nextDouble();
+    var query =
+        await firestore
+            .collection(path)
+            .where('random', isGreaterThanOrEqualTo: random)
+            .limit(1)
+            .get();
 
-    // based on how many documents you have in your collection
-    // just pull one random index
-    var random = Random().nextInt(collection.docs.length);
+    if (query.docs.isNotEmpty) {
+      return query.docs.first.data();
+    }
 
-    // then just get the document that falls under that random index
-    DocumentSnapshot randomDoc = collection.docs[random];
-    return randomDoc.data() as Map<String, dynamic>;
+    query =
+        await firestore
+            .collection(path)
+            .where('random', isLessThanOrEqualTo: random)
+            .limit(1)
+            .get();
+
+    return query.docs.single.data();
   }
 }

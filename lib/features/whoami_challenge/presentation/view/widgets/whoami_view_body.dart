@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/utils/app_colors.dart';
 import 'package:flutter_application_1/core/utils/app_text_styles.dart';
 import 'package:flutter_application_1/features/whoami_challenge/presentation/cubit/whoami_cubit.dart';
+import 'package:flutter_application_1/features/whoami_challenge/presentation/view/widgets/clue_item.dart';
+import 'package:flutter_application_1/features/whoami_challenge/presentation/view/widgets/custom_elevated_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WhoamiViewBody extends StatefulWidget {
@@ -16,6 +18,7 @@ class _WhoamiViewBodyState extends State<WhoamiViewBody> {
   var index = 0;
   bool answerVisible = false;
   String playerButtonText = 'Show Player';
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<WhoamiCubit, WhoamiState>(
@@ -43,7 +46,7 @@ class _WhoamiViewBodyState extends State<WhoamiViewBody> {
                         position: animation.drive(
                           Tween(begin: const Offset(1, 0), end: Offset.zero),
                         ),
-                        child: MyWidget(
+                        child: ClueItem(
                           clue: cluesList[index],
                           index: index + 1,
                         ),
@@ -58,40 +61,35 @@ class _WhoamiViewBodyState extends State<WhoamiViewBody> {
                   maintainSemantics: true,
                   maintainSize: true,
                   visible: answerVisible,
-                  child: Text(
-                    'Player Name: ${state.whoamiModel.answer}',
-                    style: Styles.bold16,
+                  child: AnimatedContainer(
+                    height: answerVisible ? 50 : 0,
+                    width:
+                        answerVisible ? MediaQuery.of(context).size.width : 0,
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.easeIn,
+                    child: Center(
+                      child: Text(
+                        state.whoamiModel.answer,
+                        style: Styles.bold19,
+                      ),
+                    ),
                   ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.kPrimaryColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                      ),
+                    CustomElevatedButton(
                       onPressed: () {
                         if (index < cluesList.length - 1) {
                           index++;
                           key.currentState!.insertItem(index);
                         }
                       },
-                      child: Text(
-                        'Next Clue',
-                        style: Styles.bold16.copyWith(color: Colors.white),
-                      ),
+                      text: 'Next Clue',
                     ),
 
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.kPrimaryColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                      ),
+                    CustomElevatedButton(
+                      text: playerButtonText,
                       onPressed: () {
                         answerVisible = !answerVisible;
                         if (playerButtonText == 'Show Player') {
@@ -101,10 +99,6 @@ class _WhoamiViewBodyState extends State<WhoamiViewBody> {
                         }
                         setState(() {});
                       },
-                      child: Text(
-                        playerButtonText,
-                        style: Styles.bold16.copyWith(color: Colors.white),
-                      ),
                     ),
                   ],
                 ),
@@ -112,26 +106,12 @@ class _WhoamiViewBodyState extends State<WhoamiViewBody> {
               ],
             ),
           );
+        } else if (state is WhoamiFailure) {
+          return Center(child: Text(state.message));
         } else {
           return const Center(child: CircularProgressIndicator());
         }
       },
-    );
-  }
-}
-
-class MyWidget extends StatelessWidget {
-  const MyWidget({super.key, required this.index, required this.clue});
-  final int index;
-  final String clue;
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text('$index Clue', style: Styles.medium15),
-        Text(clue, style: Styles.bold16),
-        const Divider(thickness: 2),
-      ],
     );
   }
 }
