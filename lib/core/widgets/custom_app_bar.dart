@@ -13,10 +13,7 @@ AppBar buildAppBar({
     leading: IconButton(
       icon: Visibility(
         visible: arrowBackExist,
-        child: Icon(
-          Icons.arrow_back_ios,
-          color: Theme.of(context).colorScheme.primary,
-        ),
+        child: const Icon(Icons.arrow_back_ios),
       ),
       onPressed: () => Navigator.pop(context),
     ),
