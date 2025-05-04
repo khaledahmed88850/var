@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/core/utils/app_colors.dart';
 import 'package:flutter_application_1/core/utils/app_text_styles.dart';
 import 'package:flutter_application_1/features/whoami_challenge/presentation/cubit/whoami_cubit.dart';
 import 'package:flutter_application_1/features/whoami_challenge/presentation/view/widgets/clue_item.dart';
 import 'package:flutter_application_1/features/whoami_challenge/presentation/view/widgets/custom_elevated_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WhoamiViewBody extends StatefulWidget {
   const WhoamiViewBody({super.key});
@@ -75,6 +75,7 @@ class _WhoamiViewBodyState extends State<WhoamiViewBody> {
                     ),
                   ),
                 ),
+                const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -102,7 +103,14 @@ class _WhoamiViewBodyState extends State<WhoamiViewBody> {
                     ),
                   ],
                 ),
-                const Spacer(),
+                const SizedBox(height: 20),
+                CustomElevatedButton(
+                  text: 'Next Player',
+                  onPressed: () {
+                    context.read<WhoamiCubit>().getWhoamiChallenge();
+                  },
+                ),
+                SizedBox(height: 100.h),
               ],
             ),
           );
