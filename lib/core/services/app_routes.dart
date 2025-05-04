@@ -12,9 +12,12 @@ import 'package:flutter_application_1/features/password_challenge/presentation/v
 import 'package:flutter_application_1/features/risk_challenge/data/repo/risk_challenge_repo.dart';
 import 'package:flutter_application_1/features/risk_challenge/presentation/cubit/risk_challenge_cubit.dart';
 import 'package:flutter_application_1/features/risk_challenge/presentation/view/risk_challenge_view.dart';
+import 'package:flutter_application_1/features/whoami_challenge/data/repo/whoami_repo.dart';
+import 'package:flutter_application_1/features/whoami_challenge/presentation/cubit/whoami_cubit.dart';
+import 'package:flutter_application_1/features/whoami_challenge/presentation/view/whoami_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-Route onGenerateRoute(RouteSettings settings) {
+Route? onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
     case HomeView.routeName:
       return MaterialPageRoute(builder: (context) => const HomeView());
@@ -56,7 +59,17 @@ Route onGenerateRoute(RouteSettings settings) {
               child: const BankChallengeView(),
             ),
       );
+    case WhoamiView.routeName:
+      return MaterialPageRoute(
+        builder:
+            (context) => BlocProvider(
+              create:
+                  (context) =>
+                      WhoamiCubit(getIt<WhoamiRepo>())..getWhoamiChallenge(),
+              child: const WhoamiView(),
+            ),
+      );
     default:
-      return MaterialPageRoute(builder: (context) => const Placeholder());
+      return null;
   }
 }

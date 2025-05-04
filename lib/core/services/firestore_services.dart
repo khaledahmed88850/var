@@ -57,4 +57,30 @@ class FirestoreServices implements DataBaseServices {
 
     return randomDocs;
   }
+
+  @override
+  Future<Map<String, dynamic>> getRandomSingleDocument({
+    required String path,
+  }) async {
+    final random = Random().nextDouble();
+    var query =
+        await firestore
+            .collection(path)
+            .where('random', isGreaterThanOrEqualTo: random)
+            .limit(1)
+            .get();
+
+    if (query.docs.isNotEmpty) {
+      return query.docs.first.data();
+    }
+
+    query =
+        await firestore
+            .collection(path)
+            .where('random', isLessThanOrEqualTo: random)
+            .limit(1)
+            .get();
+
+    return query.docs.single.data();
+  }
 }
