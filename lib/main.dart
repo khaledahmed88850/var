@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/services/get_it_services.dart';
+import 'package:flutter_application_1/custom_bloc_observer.dart';
 import 'package:flutter_application_1/features/home/presentation/view/home_view.dart';
 import 'package:flutter_application_1/firebase_options.dart';
 import 'package:flutter_application_1/generated/l10n.dart';
@@ -13,6 +14,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   setupGetIt();
+  CustomBlocObserver();
   runApp(const MyApp());
 }
 
