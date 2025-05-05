@@ -11,7 +11,7 @@ import 'package:flutter_application_1/features/password_challenge/presentation/v
     show PasswordChallengeView;
 import 'package:flutter_application_1/features/risk_challenge/data/repo/risk_challenge_repo.dart';
 import 'package:flutter_application_1/features/risk_challenge/presentation/cubits/risk_challenge_cubit/risk_challenge_cubit.dart';
-import 'package:flutter_application_1/features/risk_challenge/presentation/cubits/risk_ponts_calculator_cubit/risk_point_calculator_cubit.dart';
+import 'package:flutter_application_1/features/risk_challenge/presentation/cubits/risk_points_calculator_cubit/risk_point_calculator_cubit.dart';
 import 'package:flutter_application_1/features/risk_challenge/presentation/view/risk_challenge_view.dart';
 import 'package:flutter_application_1/features/whoami_challenge/data/repo/whoami_repo.dart';
 import 'package:flutter_application_1/features/whoami_challenge/presentation/cubit/whoami_cubit.dart';

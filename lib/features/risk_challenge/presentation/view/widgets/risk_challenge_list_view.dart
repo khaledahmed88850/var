@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/features/risk_challenge/presentation/cubits/risk_challenge_cubit/risk_challenge_cubit.dart';
-import 'package:flutter_application_1/features/risk_challenge/presentation/cubits/risk_ponts_calculator_cubit/risk_point_calculator_cubit.dart';
+import 'package:flutter_application_1/features/risk_challenge/presentation/cubits/risk_points_calculator_cubit/risk_point_calculator_cubit.dart';
 import 'package:flutter_application_1/features/risk_challenge/presentation/view/widgets/risk_challenge_category.dart';
 import 'package:flutter_application_1/features/risk_challenge/presentation/view/widgets/team_points.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
