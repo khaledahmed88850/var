@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/core/utils/app_text_styles.dart';
 import 'package:flutter_application_1/features/risk_challenge/presentation/cubits/risk_challenge_cubit/risk_challenge_cubit.dart';
-import 'package:flutter_application_1/features/risk_challenge/presentation/cubits/risk_points_calculator_cubit/risk_point_calculator_cubit.dart';
+import 'package:flutter_application_1/features/risk_challenge/presentation/view/widgets/modal_sheet_teams_points.dart';
 import 'package:flutter_application_1/features/risk_challenge/presentation/view/widgets/risk_challenge_category.dart';
-import 'package:flutter_application_1/features/risk_challenge/presentation/view/widgets/team_points.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,25 +18,31 @@ class RiskChallengeListView extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 20),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.w),
-                  child: Column(
-                    children: [
-                      TeamPoints(
-                        teamName: 'الفريق الاول',
-                        points:
-                            context
-                                .watch<RiskPointCalculatorCubit>()
-                                .firstTeamPoints,
+                TextButton(
+                  style: TextButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    backgroundColor: Colors.grey.shade400,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 4,
+                    ),
+                  ),
+                  onPressed:
+                      () => showModalBottomSheet(
+                        constraints: BoxConstraints(maxHeight: 0.4.sh),
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(20),
+                          ),
+                        ),
+                        context: context,
+                        builder: (context) => const ModalSheetTeamsPoints(),
                       ),
-                      TeamPoints(
-                        teamName: 'الفريق الثاني',
-                        points:
-                            context
-                                .watch<RiskPointCalculatorCubit>()
-                                .secondTeamPoints,
-                      ),
-                    ],
+                  child: Text(
+                    'عرض النقاط',
+                    style: Styles.bold19.copyWith(color: Colors.black),
                   ),
                 ),
 

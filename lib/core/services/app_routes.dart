@@ -7,8 +7,7 @@ import 'package:flutter_application_1/features/bank_challenge/presentation/view/
 import 'package:flutter_application_1/features/home/presentation/view/home_view.dart';
 import 'package:flutter_application_1/features/password_challenge/domain/repo/password_challenge_repo.dart';
 import 'package:flutter_application_1/features/password_challenge/presentation/cubit/password_challenge_cubit.dart';
-import 'package:flutter_application_1/features/password_challenge/presentation/view/password_challenge_view.dart'
-    show PasswordChallengeView;
+import 'package:flutter_application_1/features/password_challenge/presentation/view/password_challenge_view.dart';
 import 'package:flutter_application_1/features/risk_challenge/data/repo/risk_challenge_repo.dart';
 import 'package:flutter_application_1/features/risk_challenge/presentation/cubits/risk_challenge_cubit/risk_challenge_cubit.dart';
 import 'package:flutter_application_1/features/risk_challenge/presentation/cubits/risk_points_calculator_cubit/risk_point_calculator_cubit.dart';
@@ -28,12 +27,14 @@ Route? onGenerateRoute(RouteSettings settings) {
             (context) => MultiBlocProvider(
               providers: [
                 BlocProvider(
+                  create: (context) => getIt.get<RiskPointCalculatorCubit>(),
+                ),
+                BlocProvider(
                   create:
                       (context) =>
                           RiskChallengeCubit(getIt<RiskChallengeRepo>())
                             ..emitRiskChallengeStates(),
                 ),
-                BlocProvider(create: (context) => RiskPointCalculatorCubit()),
               ],
               child: const RiskChallengeView(),
             ),

@@ -24,9 +24,13 @@ class AddOrRemovePoints extends StatelessWidget {
               teamId: teamId,
             );
           },
-          icon: const Icon(Icons.add_circle_outline_rounded),
+          icon: const Icon(
+            Icons.add_circle_outline_rounded,
+            size: 30,
+            color: Color(0xFF279C2B),
+          ),
         ),
-        Text('$value', style: Styles.bold16, textAlign: TextAlign.center),
+        Text('$value', style: Styles.bold19, textAlign: TextAlign.center),
         IconButton(
           onPressed: () {
             context.read<RiskPointCalculatorCubit>().removePoints(
@@ -34,7 +38,11 @@ class AddOrRemovePoints extends StatelessWidget {
               teamId: teamId,
             );
           },
-          icon: const Icon(Icons.remove_circle_outline),
+          icon: const Icon(
+            Icons.remove_circle_outline,
+            size: 30,
+            color: Color(0xFFCF2727),
+          ),
         ),
       ],
     );

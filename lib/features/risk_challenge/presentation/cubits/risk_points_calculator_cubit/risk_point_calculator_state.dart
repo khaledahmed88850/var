@@ -8,3 +8,5 @@ final class RiskPointCalculatorInitial extends RiskPointCalculatorState {}
 final class RiskAddPoints extends RiskPointCalculatorState {}
 
 final class RiskRemovePoints extends RiskPointCalculatorState {}
+
+final class Reset extends RiskPointCalculatorState {}

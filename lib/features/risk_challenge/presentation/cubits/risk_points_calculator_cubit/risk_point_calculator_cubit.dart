@@ -8,6 +8,13 @@ class RiskPointCalculatorCubit extends Cubit<RiskPointCalculatorState> {
 
   num firstTeamPoints = 0;
   num secondTeamPoints = 0;
+
+  void reset() {
+    firstTeamPoints = 0;
+    secondTeamPoints = 0;
+    emit(Reset());
+  }
+
   void addPoints({required num value, required int teamId}) {
     switch (teamId) {
       case 1:
