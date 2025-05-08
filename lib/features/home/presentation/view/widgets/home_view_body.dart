@@ -13,18 +13,18 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
-            child: buildAppBar(
-              context: context,
-              title: 'التحديات',
-              arrowBackExist: false,
-            ),
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: buildAppBar(
+            context: context,
+            title: 'التحديات',
+            arrowBackExist: false,
           ),
-          SliverToBoxAdapter(
+        ),
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Column(
               children: [
                 ChallengeCard(
@@ -75,11 +75,12 @@ class HomeViewBody extends StatelessWidget {
                   numOfPlayers: '1 - 4',
                   title: '5 في 10',
                 ),
+                const SizedBox(height: 24),
               ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

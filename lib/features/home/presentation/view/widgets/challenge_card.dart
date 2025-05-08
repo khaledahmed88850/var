@@ -21,6 +21,14 @@ class ChallengeCard extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.transparent.withValues(alpha: 0.4),
+            spreadRadius: 2,
+            blurRadius: 1,
+            offset: const Offset(0, 2),
+          ),
+        ],
         color: Colors.transparent.withValues(alpha: 0.4),
       ),
       height: 160.h,
