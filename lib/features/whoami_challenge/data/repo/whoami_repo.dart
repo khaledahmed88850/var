@@ -10,10 +10,11 @@ class WhoamiRepo {
   WhoamiRepo({required this.dataBaseServices});
   Future<Either<Failures, WhoamiModel>> getRandomPlayer() async {
     try {
-      var data = await dataBaseServices.getRandomSingleDocument(
+      var data = await dataBaseServices.getData(
         path: FirebaseEndpoints.whoamiChallenge,
+        limit: 1,
       );
-      return right(WhoamiModel.fromJson(data));
+      return right(WhoamiModel.fromJson(data.first));
     } on Exception {
       return left(
         ServerFailure(message: 'Something went wrong , please try again'),

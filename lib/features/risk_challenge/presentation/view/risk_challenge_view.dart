@@ -8,7 +8,13 @@ class RiskChallengeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context: context, title: 'ريسك'),
+      appBar: buildAppBar(
+        context: context,
+        title: 'ريسك',
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
       body: const RiskChallengeViewBody(),
     );
   }
