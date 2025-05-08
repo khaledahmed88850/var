@@ -23,7 +23,7 @@ class ChallengeCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         color: Colors.transparent.withValues(alpha: 0.4),
       ),
-      height: 180.h,
+      height: 160.h,
       width: double.infinity,
       child: Row(
         children: [
