@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/services/get_it_services.dart';
 import 'package:flutter_application_1/features/bank_challenge/data/repo/bank_challenge_repo.dart';
-import 'package:flutter_application_1/features/bank_challenge/presentation/bank_challenge_cubit/bank_challenge_cubit.dart';
-import 'package:flutter_application_1/features/bank_challenge/presentation/bank_question_increment_cubit/bank_question_increment_cubit.dart';
+import 'package:flutter_application_1/features/bank_challenge/presentation/cubits/bank_challenge_cubit/bank_challenge_cubit.dart';
+import 'package:flutter_application_1/features/bank_challenge/presentation/cubits/bank_question_increment_cubit/bank_question_increment_cubit.dart';
+import 'package:flutter_application_1/features/bank_challenge/presentation/cubits/bank_timer_cubit/bank_timer_cubit.dart';
 import 'package:flutter_application_1/features/bank_challenge/presentation/view/bank_challenge_view.dart';
 import 'package:flutter_application_1/features/home/presentation/view/home_view.dart';
 import 'package:flutter_application_1/features/password_challenge/domain/repo/password_challenge_repo.dart';
@@ -55,6 +56,7 @@ Route? onGenerateRoute(RouteSettings settings) {
         builder:
             (context) => MultiBlocProvider(
               providers: [
+                BlocProvider(create: (context) => BankTimerCubit()),
                 BlocProvider(
                   create:
                       (context) =>

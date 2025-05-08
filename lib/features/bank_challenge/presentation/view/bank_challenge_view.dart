@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/core/widgets/custom_app_bar.dart';
+import 'package:flutter_application_1/features/bank_challenge/presentation/cubits/bank_timer_cubit/bank_timer_cubit.dart';
 import 'package:flutter_application_1/features/bank_challenge/presentation/view/widgets/bank_challenge_view_body.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BankChallengeView extends StatefulWidget {
   const BankChallengeView({super.key});
@@ -30,7 +32,14 @@ class _BankChallengeViewState extends State<BankChallengeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context: context, title: 'بنك'),
+      appBar: buildAppBar(
+        context: context,
+        title: 'بنك',
+        onPressed: () {
+          context.read<BankTimerCubit>().resetTimer();
+          Navigator.pop(context);
+        },
+      ),
       body: BankChallengeViewBody(pageController: pageController),
     );
   }

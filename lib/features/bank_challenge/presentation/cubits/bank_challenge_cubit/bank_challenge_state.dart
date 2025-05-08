@@ -8,7 +8,7 @@ final class BankChallengeInitial extends BankChallengeState {}
 final class BankChallengeLoading extends BankChallengeState {}
 
 final class BankChallengeSuccess extends BankChallengeState {
-  final List<BankChallengeModel> bankChallengeModelList;
+  final List<List<BankChallengeModel>> bankChallengeModelList;
   BankChallengeSuccess({required this.bankChallengeModelList});
 }
 
