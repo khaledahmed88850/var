@@ -8,7 +8,13 @@ class WhoamiView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(title: 'من انا', context: context),
+      appBar: buildAppBar(
+        title: 'من انا',
+        context: context,
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
 
       body: const WhoamiViewBody(),
     );

@@ -10,7 +10,13 @@ class PasswordChallengeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        buildAppBar(title: 'كلمة السر', context: context),
+        buildAppBar(
+          title: 'كلمة السر',
+          context: context,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         const Expanded(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),

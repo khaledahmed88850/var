@@ -2,7 +2,6 @@ import 'dart:math';
 import 'dart:developer' as logger;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_application_1/core/services/database_services.dart';
-import 'package:flutter_application_1/core/utils/firebase_endpoints.dart';
 
 class FirestoreServices implements DataBaseServices {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -11,8 +10,7 @@ class FirestoreServices implements DataBaseServices {
     required String path,
     required int limit,
   }) async {
-    QuerySnapshot querySnapshot =
-        await firestore.collection(FirebaseEndpoints.bankChallenge).get();
+    QuerySnapshot querySnapshot = await firestore.collection(path).get();
     List<Map<String, dynamic>> data =
         querySnapshot.docs
             .map((e) => e.data() as Map<String, dynamic>)
